@@ -1,7 +1,10 @@
 #!/bin/bash
 
 $CABAL update
-$CABAL install haddock -j$NUM_CPU
+if ! [[ $GHCVER == "head" ]]
+  then
+    $CABAL install haddock -j$NUM_CPU
+fi
 
 if ! [[ -z "$EXTRA_DEPS_PRE" ]]
   then
