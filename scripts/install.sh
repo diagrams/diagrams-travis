@@ -30,4 +30,7 @@ if ! [[ -z "$EXTRA_DEPS" ]]
     $CABAL install $EXTRA_DEPS -j$NUM_CPU
 fi
 
-$CABAL install --enable-tests --enable-benchmarks --only-dependencies -j$NUM_CPU
+INSTALL_CMD="$CABAL install --enable-tests --enable-benchmarks --only-dependencies -j$NUM_CPU"
+echo $INSTALL_CMD
+$INSTALL_CMD --dry-run
+$INSTALL_CMD
