@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 $CABAL update
 $CABAL install haddock -j$NUM_CPU

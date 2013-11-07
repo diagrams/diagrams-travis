@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 # Use hvr's PPA of up-to-date GHC packages
 sudo add-apt-repository -y ppa:hvr/ghc
