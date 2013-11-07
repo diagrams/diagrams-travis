@@ -1,6 +1,7 @@
 #!/bin/sh
 
 $CABAL update
+$CABAL install haddock -j$NUM_CPU
 
 # install any dependencies checked out from git
 if [[ -z "$HEAD_DEPS" ]]
