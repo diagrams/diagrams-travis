@@ -3,10 +3,16 @@
 $CABAL update
 $CABAL install haddock -j$NUM_CPU
 
-echo "Installing HEAD dependencies: $HEAD_DEPS"
+if ! [[ -z "$EXTRA_DEPS" ]]
+  then
+    echo "Installing extra dependencies: $EXTRA_DEPS"
+    $CABAL install $EXTRA_DEPS -j$NUM_CPU
+fi
+
 # install any dependencies checked out from git
 if ! [[ -z "$HEAD_DEPS" ]]
   then
+    echo "Installing HEAD dependencies: $HEAD_DEPS"
     for DEP in $HEAD_DEPS
     do
       DIRS="$DIRS $DEP/"
