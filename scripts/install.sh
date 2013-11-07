@@ -12,7 +12,7 @@ if ! [[ -z "$HEAD_DEPS" ]]
       DIRS="$DIRS $DEP/"
     done
     echo "$CABAL install $DIRS"
-    $CABAL install $DIRS
+    $CABAL install $DIRS -j$NUM_CPU
 fi
 
-$CABAL install --enable-tests --enable-benchmarks --only-dependencies -j$NUM_CPU
+$CABAL install --only-dependencies -j$NUM_CPU
