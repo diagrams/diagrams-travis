@@ -24,3 +24,4 @@ esac
 export NUM_CPU=2
 
 export PATH=/opt/ghc/$GHCVER/bin:$PATH
+export CABAL=cabal-$CABALVER
