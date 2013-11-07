@@ -27,4 +27,4 @@ if ! [[ -z "$EXTRA_DEPS" ]]
     $CABAL install $EXTRA_DEPS -j$NUM_CPU
 fi
 
-$CABAL install --only-dependencies -j$NUM_CPU
+$CABAL install --enable-tests --enable-benchmarks --only-dependencies -j$NUM_CPU
