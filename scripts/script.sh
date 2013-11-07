@@ -2,7 +2,7 @@
 
 if [[ $GHCVER == "head" ]]
   then
-    DOCBUILD="Skipping docs under GHC HEAD..."
+    DOCBUILD="echo 'Skipping docs under GHC HEAD...'"
   else
     DOCBUILD="$CABAL haddock"
 fi
