@@ -11,7 +11,7 @@ if ! [[ -z "$HEAD_DEPS" ]]
     do
       DIRS="$DIRS $DEP/"
     done
-    echo "$CABAL install $DIRS"
+    echo "$CABAL install $DIRS -j$NUM_CPU"
     $CABAL install $DIRS -j$NUM_CPU
 fi
 

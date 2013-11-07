@@ -7,6 +7,7 @@ sudo apt-get install cabal-install-$CABALVER ghc-$GHCVER
 
 for DEP in $HEAD_DEPS
 do
+  echo "Cloning $DEP from github..."
   git clone --quiet git://github.com/diagrams/$DEP.git
   cd $DEP
   if git branch -a |grep -x "  remotes/origin/${TRAVIS_BRANCH}" > /dev/null; then git checkout ${TRAVIS_BRANCH}; fi
