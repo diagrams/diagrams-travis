@@ -3,6 +3,12 @@
 $CABAL update
 $CABAL install haddock -j$NUM_CPU
 
+if ! [[ -z "$EXTRA_DEPS_PRE" ]]
+  then
+    echo "Pre-installing extra dependencies: $EXTRA_DEPS_PRE"
+    $CABAL install $EXTRA_DEPS_PRE -j$NUM_CPU
+fi
+
 # install any dependencies checked out from git
 if ! [[ -z "$HEAD_DEPS" ]]
   then
