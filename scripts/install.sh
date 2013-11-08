@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INSTALL_CMD="$CABAL install --enable-tests --enable-benchmarks --only-dependencies -j$NUM_CPU"
+INSTALL_CMD="$CABAL install --enable-tests --enable-benchmarks --only-dependencies $CABAL_FLAGS -j$NUM_CPU"
 
 $CABAL update\
   && if ! [[ $GHCVER == "head" ]]
