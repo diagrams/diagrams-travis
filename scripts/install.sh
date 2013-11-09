@@ -38,8 +38,8 @@ $CABAL update\
 	 $EXTRA_DEPS_INSTALL --dry-run -v3
 	 $EXTRA_DEPS_INSTALL
      fi\
-  && echo "============================================================"
-  && echo "Installing"
+  && echo "============================================================"\
+  && echo "Installing"\
   && echo $INSTALL_CMD\
   && $INSTALL_CMD --dry-run -v3\
   && $INSTALL_CMD
