@@ -9,24 +9,37 @@ $CABAL update\
      fi\
   && if ! [[ -z "$EXTRA_DEPS_PRE" ]]
        then
+         echo "============================================================"
          echo "Pre-installing extra dependencies: $EXTRA_DEPS_PRE"
-         $CABAL install $EXTRA_DEPS_PRE $CABAL_CONSTRAINTS -j$NUM_CPU
+	 EXTRA_DEPS_PRE_INSTALL="$CABAL install $EXTRA_DEPS_PRE $CABAL_CONSTRAINTS -j$NUM_CPU"
+	 echo $EXTRA_DEPS_PRE_INSTALL
+	 $EXTRA_DEPS_PRE_INSTALL --dry-run -v3
+	 $EXTRA_DEPS_PRE_INSTALL
      fi\
   && if ! [[ -z "$HEAD_DEPS" ]]
        then
+         echo "============================================================"
          echo "Installing HEAD dependencies: $HEAD_DEPS"
          for DEP in $HEAD_DEPS
          do
            DIRS="$DIRS $DEP/"
          done
-         echo "$CABAL install $DIRS -j$NUM_CPU"
-         $CABAL install $DIRS $CABAL_CONSTRAINTS -j$NUM_CPU
+         HEAD_DEPS_INSTALL="$CABAL install $DIRS $CABAL_CONSTRAINTS -j$NUM_CPU"
+	 echo $HEAD_DEPS_INSTALL
+	 $HEAD_DEPS_INSTSALL --dry-run -v3
+         $HEAD_DEPS_INSTALL
      fi\
   && if ! [[ -z "$EXTRA_DEPS" ]]
        then
+         echo "============================================================"
          echo "Installing extra dependencies: $EXTRA_DEPS"
-         $CABAL install $EXTRA_DEPS $CABAL_CONSTRAINTS -j$NUM_CPU
+	 EXTRA_DEPS_INSTALL="$CABAL install $EXTRA_DEPS $CABAL_CONSTRAINTS -j$NUM_CPU"
+	 echo $EXTRA_DEPS_INSTALL
+	 $EXTRA_DEPS_INSTALL --dry-run -v3
+	 $EXTRA_DEPS_INSTALL
      fi\
+  && echo "============================================================"
+  && echo "Installing"
   && echo $INSTALL_CMD\
   && $INSTALL_CMD --dry-run -v3\
   && $INSTALL_CMD
