@@ -23,5 +23,15 @@ esac
 # Travis VMs run on 1.5 virtual cores
 export NUM_CPU=2
 
+# Constrain TH to the version we've got
+case "$GHCVER" in
+"7.4*")
+  export CABAL="$CABAL --constraint='template-haskell ==2.7.0.0'"
+  ;;
+"7.6*")
+  export CABAL="$CABAL --constraint='template-haskell ==2.8.0.0'"
+  ;;
+esac
+
 export PATH=/opt/ghc/$GHCVER/bin:$PATH
 export CABAL=cabal-$CABALVER
