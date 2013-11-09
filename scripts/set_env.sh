@@ -38,3 +38,4 @@ case "$GHCVER" in
   ;;
 esac
 
+echo "Using cabal command: $CABAL"
