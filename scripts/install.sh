@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INSTALL_CMD="$CABAL install --enable-tests --enable-benchmarks --only-dependencies $CABAL_FLAGS -j$NUM_CPU"
+INSTALL_CMD="$CABAL install --enable-tests --enable-benchmarks --only-dependencies $CABAL_FLAGS $CABAL_CONSTRAINTS -j$NUM_CPU"
 
 $CABAL update\
   && if ! [[ $GHCVER == "head" ]]
@@ -10,7 +10,7 @@ $CABAL update\
   && if ! [[ -z "$EXTRA_DEPS_PRE" ]]
        then
          echo "Pre-installing extra dependencies: $EXTRA_DEPS_PRE"
-         $CABAL install $EXTRA_DEPS_PRE -j$NUM_CPU
+         $CABAL install $EXTRA_DEPS_PRE $CABAL_CONSTRAINTS -j$NUM_CPU
      fi\
   && if ! [[ -z "$HEAD_DEPS" ]]
        then
@@ -20,12 +20,12 @@ $CABAL update\
            DIRS="$DIRS $DEP/"
          done
          echo "$CABAL install $DIRS -j$NUM_CPU"
-         $CABAL install $DIRS -j$NUM_CPU
+         $CABAL install $DIRS $CABAL_CONSTRAINTS -j$NUM_CPU
      fi\
   && if ! [[ -z "$EXTRA_DEPS" ]]
        then
          echo "Installing extra dependencies: $EXTRA_DEPS"
-         $CABAL install $EXTRA_DEPS -j$NUM_CPU
+         $CABAL install $EXTRA_DEPS $CABAL_CONSTRAINTS -j$NUM_CPU
      fi\
   && echo $INSTALL_CMD\
   && $INSTALL_CMD --dry-run\
