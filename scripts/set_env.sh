@@ -25,6 +25,9 @@ esac
 # Travis VMs run on 1.5 virtual cores
 export NUM_CPU=2
 
+export PATH=/opt/ghc/$GHCVER/bin:$PATH
+export CABAL=cabal-$CABALVER
+
 # Constrain TH to the version we've got
 case "$GHCVER" in
 "7.4*")
@@ -35,5 +38,3 @@ case "$GHCVER" in
   ;;
 esac
 
-export PATH=/opt/ghc/$GHCVER/bin:$PATH
-export CABAL=cabal-$CABALVER
