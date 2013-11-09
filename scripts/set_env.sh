@@ -2,6 +2,8 @@
 # rather than executed, so the environment variables are set in the
 # parent shell.
 
+date
+
 case "$HPVER" in
 "") ;;
 
