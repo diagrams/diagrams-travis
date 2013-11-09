@@ -28,5 +28,5 @@ $CABAL update\
          $CABAL install $EXTRA_DEPS $CABAL_CONSTRAINTS -j$NUM_CPU
      fi\
   && echo $INSTALL_CMD\
-  && $INSTALL_CMD --dry-run\
+  && $INSTALL_CMD --dry-run -v3\
   && $INSTALL_CMD
