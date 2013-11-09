@@ -31,7 +31,7 @@ export CABAL=cabal-$CABALVER
 # Constrain TH to the version we've got
 case "$GHCVER" in
 7.4*)
-  export CABAL_CONSTRAINTS="--constraint=template-haskell==2.7.0.0 --constraint='containers installed'"
+  export CABAL_CONSTRAINTS="--constraints=template-haskell==2.7.0.0,containers installed"
   ;;
 7.6*)
   export CABAL_CONSTRAINTS="--constraint=template-haskell==2.8.0.0"
