@@ -1,8 +1,8 @@
 #! /bin/bash
 
-if [[ $GHCVER == "head" ]]
+if [[ $GHCVER == "head" || -n "$SKIP_HADDOCK" ]]
   then
-    DOCBUILD="echo 'Skipping docs under GHC HEAD...'"
+    DOCBUILD="echo 'Skipping docs...'"
   else
     DOCBUILD="$CABAL haddock"
 fi
