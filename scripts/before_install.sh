@@ -17,4 +17,7 @@ sudo add-apt-repository -y ppa:hvr/ghc\
        cd $DEP
        if git branch -a |grep -x "  remotes/origin/${HEAD_BRANCH}" > /dev/null; then git checkout ${HEAD_BRANCH}; fi
        cd ..
-     done
+     done\
+  # && $CABAL update
+  # Uncomment whenever hackage is down.
+  && mkdir -p ~/.cabal && cp travis/config ~/.cabal/config && $CABAL update
