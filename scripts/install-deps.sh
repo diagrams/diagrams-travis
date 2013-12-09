@@ -1,4 +1,5 @@
 $CABAL update\
+  && $CABAL install alex happy -j$NUM_CPU\
   && if ! [[ $GHCVER == "head" ]]
        then
          $CABAL install haddock -j$NUM_CPU
