@@ -45,6 +45,4 @@ esac
 echo "Using cabal command: $CABAL"
 echo "  with constraints: $CABAL_CONSTRAINTS"
 echo "PATH: $PATH"
-echo
-echo ".cabal/config:"
-cat $HOME/.cabal/config
+
