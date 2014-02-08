@@ -40,6 +40,9 @@ case "$GHCVER" in
 7.6*)
   export CABAL_CONSTRAINTS="--constraint=template-haskell==2.8.0.0"
   ;;
+7.8*)
+  export SKIP_HADDOCK=1
+  ;;
 esac
 
 echo "Using cabal command: $CABAL"

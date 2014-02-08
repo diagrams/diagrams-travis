@@ -1,6 +1,6 @@
 $CABAL update\
   && $CABAL install alex happy cpphs -j$NUM_CPU\
-  && if ! [[ $GHCVER == "head" ]]
+  && if ! [[ $GHCVER == "head" || -n $SKIP_HADDOCK ]]
        then
          $CABAL install haddock -j$NUM_CPU
      fi\
