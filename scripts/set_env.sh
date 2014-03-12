@@ -41,6 +41,7 @@ case "$GHCVER" in
   export CABAL_CONSTRAINTS="--constraint=template-haskell==2.8.0.0"
   ;;
 7.8*)
+  export CABAL_CONSTRAINTS="--constraint=template-haskell==2.9.0.0"
   export SKIP_HADDOCK=1
   ;;
 esac
