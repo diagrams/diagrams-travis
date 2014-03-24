@@ -35,14 +35,13 @@ export CABAL=cabal-$CABALVER
 # Constrain TH to the version we've got
 case "$GHCVER" in
 7.4*)
-  export CABAL_CONSTRAINTS="--constraint=template-haskell==2.7.0.0"
+  export CABAL_CONSTRAINTS="--constraint=template-haskell==2.7.0.0 --constraint=haddock<2.14"
   ;;
 7.6*)
-  export CABAL_CONSTRAINTS="--constraint=template-haskell==2.8.0.0"
+  export CABAL_CONSTRAINTS="--constraint=template-haskell==2.8.0.0 --constraint=haddock<2.14"
   ;;
 7.8*)
   export CABAL_CONSTRAINTS="--constraint=template-haskell==2.9.0.0"
-  export SKIP_HADDOCK=1
   ;;
 esac
 
