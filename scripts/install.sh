@@ -4,7 +4,7 @@ INSTALL_CMD="$CABAL install --enable-tests --enable-benchmarks --only-dependenci
 
 ./travis/scripts/install-deps.sh\
   && echo "============================================================"\
-  && cabal install packunused packdeps
+  && cabal install packunused packdeps\
   && echo "============================================================"\
   && echo "Installing"\
   && echo $INSTALL_CMD\
