@@ -10,7 +10,7 @@ fi
 $CABAL configure --enable-tests --enable-benchmarks -v2 $CABAL_FLAGS\
   && $CABAL build --ghc-options='-Wall -Werror -ddump-minimal-imports'\
   && $CABAL test\
-  && packdeps\
+  && packdeps `ls --color=never *.cabal`\
   && packunused\
   && $DOCBUILD\
   && $CABAL check\
