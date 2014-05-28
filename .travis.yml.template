@@ -8,7 +8,7 @@ env:
     - GHCVER=7.6.3
     - GHCVER=head
   global:
-    - CABALVER=1.18
+    - CABALVER=1.20
     - UBUNTU_PKGS=""
     - EXTRA_DEPS_PRE=""
     - HEAD_DEPS=""
