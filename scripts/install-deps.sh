@@ -21,9 +21,12 @@ $CABAL update\
          do
            DIRS="$DIRS $DEP/"
          done
-         HEAD_DEPS_INSTALL="$CABAL install $DIRS $CABAL_CONSTRAINTS -j$NUM_CPU"
+         HEAD_DEPS_INSTALL="$CABAL install  --only-dependencies $DIRS . $CABAL_CONSTRAINTS -j$NUM_CPU"
 	 echo $HEAD_DEPS_INSTALL
 	 $HEAD_DEPS_INSTALL --dry-run -v3
+         $HEAD_DEPS_INSTALL
+     HEAD_DEPS_INSTALL="$CABAL install $DIRS $CABAL_CONSTRAINTS -j$NUM_CPU"
+	 echo $HEAD_DEPS_INSTALL
          $HEAD_DEPS_INSTALL
      fi\
   && if ! [[ -z "$EXTRA_DEPS" ]]
