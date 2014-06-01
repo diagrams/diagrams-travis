@@ -21,14 +21,20 @@ $CABAL update\
          do
            DIRS="$DIRS $DEP/"
          done
-         HEAD_DEPS_INSTALL="$CABAL install  --only-dependencies $DIRS . $CABAL_CONSTRAINTS -j$NUM_CPU"
-	 echo $HEAD_DEPS_INSTALL
-	 $HEAD_DEPS_INSTALL --dry-run -v3
-         $HEAD_DEPS_INSTALL
-     HEAD_DEPS_INSTALL="$CABAL install $DIRS $CABAL_CONSTRAINTS -j$NUM_CPU"
-	 echo $HEAD_DEPS_INSTALL
-         $HEAD_DEPS_INSTALL
      fi\
+   # install dependencies of HEAD_DEPS, if any, and Hackage dependencies of the package under test
+   && echo "Installing dependencies from Hackage"\
+   && DEPS_INSTALL="$CABAL install  --only-dependencies $DIRS . $CABAL_CONSTRAINTS -j$NUM_CPU"\
+   && echo $DEPS_INSTALL\
+   && $DEPS_INSTALL --dry-run -v3\
+   && $DEPS_INSTALL\
+   && if ! [[ -z "DIRS" ]]
+       then
+       echo "Installing $HEAD_DEPS"
+       HEAD_DEPS_INSTALL="$CABAL install $DIRS $CABAL_CONSTRAINTS -j$NUM_CPU"
+       echo $HEAD_DEPS_INSTALL
+       $HEAD_DEPS_INSTALL
+   fi\
   && if ! [[ -z "$EXTRA_DEPS" ]]
        then
          echo "============================================================"
