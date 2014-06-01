@@ -22,8 +22,7 @@ $CABAL update\
            DIRS="$DIRS $DEP/"
          done
      fi\
-   # install dependencies of HEAD_DEPS, if any, and Hackage dependencies of the package under test
-   && echo "Installing dependencies from Hackage"\
+  && echo "Installing dependencies from Hackage"\
    && DEPS_INSTALL="$CABAL install  --only-dependencies $DIRS . $CABAL_CONSTRAINTS -j$NUM_CPU"\
    && echo $DEPS_INSTALL\
    && $DEPS_INSTALL --dry-run -v3\
