@@ -23,7 +23,7 @@ $CABAL update\
          done
      fi\
   && echo "Installing dependencies from Hackage"\
-   && DEPS_INSTALL="$CABAL install  --only-dependencies $DIRS . $CABAL_CONSTRAINTS -j$NUM_CPU"\
+   && DEPS_INSTALL="$CABAL install  --enable-tests --enable-benchmarks --only-dependencies $DIRS . $CABAL_CONSTRAINTS -j$NUM_CPU"\
    && echo $DEPS_INSTALL\
    && $DEPS_INSTALL --dry-run -v3\
    && $DEPS_INSTALL\
