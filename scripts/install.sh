@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./travis/scripts/install-deps.sh\
+./travis/scripts/install-deps.sh
