@@ -4,6 +4,7 @@ $CABAL update\
        then
          $CABAL install $CABAL_CONSTRAINTS haddock -j$NUM_CPU
      fi\
+  && $CABAL sandbox init\
   && if ! [[ -z "$EXTRA_DEPS_PRE" ]]
        then
          echo "============================================================"
@@ -16,24 +17,16 @@ $CABAL update\
   && if ! [[ -z "$HEAD_DEPS" ]]
        then
          echo "============================================================"
-         echo "Installing HEAD dependencies: $HEAD_DEPS"
-         for DEP in $HEAD_DEPS
-         do
-           DIRS="$DIRS $DEP/"
-         done
+         echo "Registering HEAD dependencies: $HEAD_DEPS"
+         ADD_SOURCE="$CABAL sandbox add-source $HEAD_DEPS"
+         echo $ADD_SOURCE
+         $ADD_SOURCE
      fi\
-  && echo "Installing dependencies from Hackage"\
-   && DEPS_INSTALL="$CABAL install  --enable-tests --enable-benchmarks --only-dependencies $DIRS . $CABAL_CONSTRAINTS -j$NUM_CPU"\
-   && echo $DEPS_INSTALL\
-   && $DEPS_INSTALL --dry-run -v3\
-   && $DEPS_INSTALL\
-   && if ! [[ -z "DIRS" ]]
-       then
-       echo "Installing $HEAD_DEPS"
-       HEAD_DEPS_INSTALL="$CABAL install $DIRS $CABAL_CONSTRAINTS -j$NUM_CPU"
-       echo $HEAD_DEPS_INSTALL
-       $HEAD_DEPS_INSTALL
-   fi\
+  && echo "Installing dependencies"\
+  && DEPS_INSTALL="$CABAL install  --enable-tests --enable-benchmarks --only-dependencies  $CABAL_CONSTRAINTS -j$NUM_CPU"\
+  && echo $DEPS_INSTALL\
+  && $DEPS_INSTALL --dry-run -v3\
+  && $DEPS_INSTALL\
   && if ! [[ -z "$EXTRA_DEPS" ]]
        then
          echo "============================================================"
