@@ -23,7 +23,7 @@ $CABAL update\
          $ADD_SOURCE
      fi\
   && echo "Installing dependencies"\
-  && DEPS_INSTALL="$CABAL install  --enable-tests --enable-benchmarks --only-dependencies  $CABAL_CONSTRAINTS -j$NUM_CPU"\
+  && DEPS_INSTALL="$CABAL install  --enable-tests --enable-benchmarks --only-dependencies $CABAL_FLAGS $CABAL_CONSTRAINTS -j$NUM_CPU"\
   && echo $DEPS_INSTALL\
   && $DEPS_INSTALL --dry-run -v3\
   && $DEPS_INSTALL\
