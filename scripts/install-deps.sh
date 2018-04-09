@@ -1,8 +1,10 @@
 $CABAL update\
+  && "${HADDOCKVER:=haddock}"\
+  && echo "Using $HADDOCKVER"\
   && $CABAL install alex happy cpphs -j$NUM_CPU\
   && if ! [[ $GHCVER == "head" || -n $SKIP_HADDOCK ]]
        then
-         $CABAL install $CABAL_CONSTRAINTS haddock -j$NUM_CPU
+         $CABAL install $CABAL_CONSTRAINTS $HADDOCKVER -j$NUM_CPU
      fi\
   && if ! [[ -z "$EXTRA_DEPS_PRE" ]]
        then
