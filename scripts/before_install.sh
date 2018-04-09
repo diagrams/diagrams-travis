@@ -9,6 +9,7 @@ sudo add-apt-repository -y ppa:hvr/ghc\
 	 echo "Installing Ubuntu packages: $UBUNTU_PKGS"
 	 sudo apt-get install $UBUNTU_PKGS
      fi\
+  && rm -rf .cabal/config\
   && travis/scripts/git_deps.sh
 
  # Uncomment whenever hackage is down --- doesn't actually work
