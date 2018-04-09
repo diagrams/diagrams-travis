@@ -1,5 +1,5 @@
 $CABAL update\
-  && "${HADDOCKVER:=haddock}"\
+  && : "${HADDOCKVER:=haddock}"\
   && echo "Using $HADDOCKVER"\
   && $CABAL install alex happy cpphs -j$NUM_CPU\
   && if ! [[ $GHCVER == "head" || -n $SKIP_HADDOCK ]]
