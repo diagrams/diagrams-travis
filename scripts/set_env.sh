@@ -52,6 +52,18 @@ case "$GHCVER" in
   ;;
 esac
 
+# For cabal 3.* and onward, we need to prepend 'v1-' to cabal commands for
+# backwards compatibility with the build scripts.
+case "$CABALVER" in
+3.*)
+  echo "Detected CABALVER=3.*; prepending 'v1-' to cabal commands"
+  export V1='v1-'
+  ;;
+*)
+  export V1=''
+  ;;
+esac
+
 echo "Using cabal command: $CABAL"
 echo "  with constraints: $CABAL_CONSTRAINTS"
 echo "PATH: $PATH"
