@@ -14,8 +14,8 @@ if [[ -n "$SKIP_TESTS" ]]
     TESTBUILD="$CABAL test"
 fi
 
-$CABAL configure --enable-tests --enable-benchmarks -v2 $CABAL_FLAGS\
-  && $CABAL build --ghc-options='-Wall -Werror -ddump-minimal-imports'\
+$CABAL ${V1}configure --enable-tests --enable-benchmarks -v2 $CABAL_FLAGS\
+  && $CABAL ${V1}build --ghc-options='-Wall -Werror -ddump-minimal-imports'\
   && $TESTBUILD\
   && $DOCBUILD\
   && $CABAL check\
